@@ -41,7 +41,7 @@ void VPX_server::recv_img(int &id, Mat &image){
 	zmq_recv(receiver, &id, sizeof(int), 0);
 	zmq_recv(receiver, (char *)&width, 4, 0);
 	zmq_recv(receiver, (char *)&height, 4, 0);
-	printf("clos:%d\nrows:%d\n", width, height);
+	//printf("clos:%d\nrows:%d\n", width, height);
 
 	int len = width*height*3;
 	img = (char*)malloc(sizeof(char)*len);

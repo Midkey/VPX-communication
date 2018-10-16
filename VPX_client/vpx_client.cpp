@@ -15,7 +15,7 @@ VPX_client::VPX_client(){
     //  Socket to send messages to
     sender = zmq_socket(context, ZMQ_PUSH);
     zmq_connect(sender, "tcp://127.0.0.1:5558");
-    printf("Connected to Server.\n");
+    printf("Connecting to Server.\n");
     //  Socket to receive messages on
     receiver = zmq_socket(context, ZMQ_PULL);
     zmq_bind(receiver, "tcp://*:5557");
@@ -37,7 +37,7 @@ void VPX_client::recv_img(Mat &image){
 	// zmq_recv(receiver, &id, sizeof(int), 0);
 	zmq_recv(receiver, (char *)&width, 4, 0);
 	zmq_recv(receiver, (char *)&height, 4, 0);
-	printf("clos:%d\nrows:%d\n", width, height);
+	// printf("clos:%d\nrows:%d\n", width, height);
 
 	int len = width*height*3;
 	img = (char*)malloc(sizeof(char)*len);
